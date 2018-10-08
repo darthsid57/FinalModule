@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Header, Table,Icon, Grid, Button} from 'semantic-ui-react'
 
-const API = 'http://localhost:4001/users';
+const API = 'http://localhost:8080/users';
 
 class UserController extends Component {
 
