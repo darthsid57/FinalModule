@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import SearchBar from './SearchBar';
 import List from './List';
+import { Grid, Button, Segment } from 'semantic-ui-react';
 
 export default class UserList extends Component{
 
@@ -31,13 +32,33 @@ export default class UserList extends Component{
 
     }
 
+    handleItemClick = () => {
+        return(
+            <Segment>
+                
+            </Segment>
+        )
+    }
+
     render() {
         const {users} = this.state
         return (
-          <div className="Card">
-            <div className="header">NAME LIST</div>
-            <SearchBar searchFunc={(e) => this.filterNames(e)}/>
-            <List usernames={users}/>
+          <div>
+              <Grid>
+                  <Grid.Row >
+                      <Grid.Column >
+                        <SearchBar searchFunc={(e) => this.filterNames(e)}/>
+                      </Grid.Column>
+                      <Grid.Column >
+                        <Button onClick={this.handleItemClick}>Add</Button>
+                      </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                      <Grid.Column>
+                        <List usernames={users}/>
+                      </Grid.Column>
+                  </Grid.Row>
+              </Grid>
           </div>
         );
       }

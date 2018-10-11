@@ -1,10 +1,9 @@
 import React from 'react'
+import {Input} from 'semantic-ui-react'
  
 const SearchBar = props => {
   return(
-    <div>
-      <input className="searchBar" type="text" placeholder="search user" onChange={props.searchFunc}/>
-    </div>
+      <Input icon='search' type="text" placeholder="search user" onChange={props.searchFunc}/>
   )
 }
  
