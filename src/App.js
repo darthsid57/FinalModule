@@ -12,6 +12,8 @@ import ControlledPortal from './View/ControlledPortal';
 import DeleteUser from './Controller/UserDelete';
 import Vessels from './Controller/Vessels/vessel';
 
+import PostUser from './Controller/UsersPost';
+
 
 
 import Home from './Pages/Home';
@@ -29,6 +31,7 @@ class App extends Component {
           <Route path='/DeleteUser' component={DeleteUser} />
 
           <Route path='/vessels' component={Vessels} />
+          <Route path='/PostUser' component={PostUser} />
         </div>
       )
     }
