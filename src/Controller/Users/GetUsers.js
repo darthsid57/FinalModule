@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import SearchBar from './SearchBar';
 import List from './List';
-import { Grid, Button, Segment } from 'semantic-ui-react';
+import { Grid} from 'semantic-ui-react';
+
 
 export default class UserList extends Component{
 
@@ -32,25 +33,15 @@ export default class UserList extends Component{
 
     }
 
-    handleItemClick = () => {
-        return(
-            <Segment>
-                
-            </Segment>
-        )
-    }
-
     render() {
         const {users} = this.state
         return (
           <div>
+              <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css"></link>
               <Grid>
                   <Grid.Row >
                       <Grid.Column >
                         <SearchBar searchFunc={(e) => this.filterNames(e)}/>
-                      </Grid.Column>
-                      <Grid.Column >
-                        <Button onClick={this.handleItemClick}>Add</Button>
                       </Grid.Column>
                   </Grid.Row>
                   <Grid.Row>

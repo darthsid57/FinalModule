@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input, Menu, Segment, Container } from 'semantic-ui-react'
-import UserController from './UsersGet';
-import SearchBar from './SearchBar';
+import UserController from './Users/GetUsers';
+import SearchBar from './Users/SearchBar';
 import VesselList from './Vessels/vessel'
 import { Link } from 'react-router-dom';
 

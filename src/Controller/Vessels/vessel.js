@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import SearchBar from '../SearchBar';
+import SearchBar from '../Users/SearchBar';
 import List from './vesselList';
 import { Grid, Button, Segment } from 'semantic-ui-react';
 
