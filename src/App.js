@@ -10,7 +10,7 @@ import PostUser from './Controller/Users/AddUser';
 
 import UserList from './Controller/Users/GetUsers'
 
-
+import CompanyList from './Controller/Company/GetCompany'
 
 import Home from './Pages/Home';
 
@@ -27,6 +27,7 @@ class App extends Component {
           <Route path='/GetUsers' component={UserList} />
           <Route path='/vessels' component={Vessels} />
           <Route path='/AddUser' component={PostUser} />
+          <Route path='/GetCompany' component={CompanyList} />
         </div>
       )
     }

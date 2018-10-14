@@ -3,13 +3,33 @@ import axios from 'axios';
 import {Form, Container, Message} from 'semantic-ui-react'
 
 export default class AddUser extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            companies: []
+        };
+    }
+    
     state = {
         firstname: '',
         lastname:'',
         pin: '',
         type: '',
         company: '',
-        status: ''
+        status: '',
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/company')
+            .then(json => json.data.data.map(data => (
+                {
+                    key: `${data.id}`,
+                    value: `${data.id}`,
+                    text: `${data.company_name}`
+                }
+            )))
+            .then( newData => this.setState({companies: newData}))
+            .catch(error => alert(error))
     }
 
     handleChange = (e, { name, value}) => this.setState({[name]: value})
@@ -17,6 +37,7 @@ export default class AddUser extends Component{
     // handleChange = event => {
     //     this.setState({ name: event.target.value });
     // }
+
 
     handleSubmit = event => {
         event.preventDefault();
@@ -50,12 +71,8 @@ export default class AddUser extends Component{
             })
     }
 
-    setGender(event) {
-        console.log(event.target.value);
-      }
-
     render(){
-        const {firstname, lastname, pin, type, company} = this.state
+        const {firstname, lastname, pin, type, company, companies} = this.state
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
@@ -65,9 +82,11 @@ export default class AddUser extends Component{
                         <Form.Input placeholder='Last Name' name='lastname' value={lastname} onChange={this.handleChange}/>
                         <Form.Input placeholder='Pin' name='pin' value={pin} onChange={this.handleChange}/>
                         <Form.Input placeholder='Type' name='type' value={type} onChange={this.handleChange}/>
-                        <Form.Input placeholder='Company' name='company' value={company} onChange={this.handleChange}/>
-                            <Form.Radio label='Active' type="radio" value="active" name="status" onChange={this.handleChange}/>
-                            <Form.Radio label='Inactive' type="radio" value="inactive" name="status" onChange={this.handleChange}/>
+                        
+                        <Form.Select placeholder='Company' name='company' value={company} options={companies} onChange={this.handleChange}/>
+                        
+                        <Form.Radio label='Active' type="radio" value="active" name="status" onChange={this.handleChange}/>
+                        <Form.Radio label='Inactive' type="radio" value="inactive" name="status" onChange={this.handleChange}/>
                         <Message success header='Form Completed' content="You're all signed up for the newsletter" />
                         <Form.Button content='Submit'/> 
 
