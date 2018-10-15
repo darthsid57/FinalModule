@@ -5,6 +5,8 @@ import SearchBar from './SearchBar';
 import List from './List';
 import { Grid} from 'semantic-ui-react';
 
+import EditUsers from './EditUser'
+
 
 export default class UserList extends Component{
 
@@ -24,8 +26,14 @@ export default class UserList extends Component{
         axios.get('http://localhost:8080/users')
             .then(json => json.data.data.map(data => (
                 {
-                    name: `${data.user_firstname} ${data.user_lastname}`,
-                    id: data.user_id
+                    id: data.user_id,
+                    firstname: `${data.user_firstname}`, 
+                    lastname: `${data.user_lastname}`,
+                    pin: data.user_pin,
+                    type: `${data.usertype}`,
+                    company: `${data.company_name}`,
+                    status: `${data.user_status}`
+
                 }
             )))
             .then( newData => this.setState({users: newData, store: newData}))
@@ -47,6 +55,7 @@ export default class UserList extends Component{
                   <Grid.Row>
                       <Grid.Column>
                         <List usernames={users}/>
+                        <EditUsers users={users} />
                       </Grid.Column>
                   </Grid.Row>
               </Grid>

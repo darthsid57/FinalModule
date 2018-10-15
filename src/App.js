@@ -14,6 +14,8 @@ import CompanyList from './Controller/Company/GetCompany'
 
 import Home from './Pages/Home';
 
+import EditUser from './Controller/Users/EditUser'
+
 
 class App extends Component {
   
@@ -28,6 +30,7 @@ class App extends Component {
           <Route path='/vessels' component={Vessels} />
           <Route path='/AddUser' component={PostUser} />
           <Route path='/GetCompany' component={CompanyList} />
+          <Route path='/EditUser' component={EditUser} />
         </div>
       )
     }
